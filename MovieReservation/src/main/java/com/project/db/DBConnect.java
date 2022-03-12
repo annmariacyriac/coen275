@@ -8,7 +8,7 @@ public class DBConnect {
 
 	Connection conn = null;
 	String username = "root";
-	String pwd = "Godislove";
+	String pwd = "root";
 	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/moviereservation";
 
