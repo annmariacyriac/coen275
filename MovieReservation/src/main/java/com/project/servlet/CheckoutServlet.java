@@ -19,7 +19,6 @@ public class CheckoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] names = request.getParameterValues("selectedSeats");
 		List<String> selectedSeats = Arrays.asList(names);
-		System.out.println(selectedSeats);
 		request.getSession().setAttribute("selectedSeats", selectedSeats);
 		
 		if(request.getSession().getAttribute("username")!=null){

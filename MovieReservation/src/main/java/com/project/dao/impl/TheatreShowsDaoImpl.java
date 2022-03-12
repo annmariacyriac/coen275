@@ -4,18 +4,18 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.project.dao.TheatreShowsDao;
 import com.project.db.DBConnect;
 import com.project.model.Screen;
 import com.project.model.Show;
 import com.project.model.Theatre;
 
-public class TheatreShowsDaoImpl {
+public class TheatreShowsDaoImpl implements TheatreShowsDao {
 
 	public List<Theatre> getTheatreShowsByDate(int movieId, String showDate) {
 

@@ -6,11 +6,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.project.dao.RetrieveBookingDao;
 import com.project.db.DBConnect;
 import com.project.model.BookedShows;
 import com.project.model.Show;
 
-public class RetrieveBookingDaoImpl {
+public class RetrieveBookingDaoImpl implements RetrieveBookingDao {
 
 	public List<BookedShows> retrieveBooking(int userId) {
 
@@ -34,7 +35,6 @@ public class RetrieveBookingDaoImpl {
 				bookedShows.setPrice(rs.getInt("bookingprice"));
 				bookedShows.setScreenName(rs.getString("screenname"));
 				bookedShows.setMovieName(rs.getString("moviename"));
-				// bookedShows.setSeats(null);
 				Show show = new Show();
 				show.setShowTime(rs.getString("starttime"));
 				show.setShowDate(rs.getString("showdate"));

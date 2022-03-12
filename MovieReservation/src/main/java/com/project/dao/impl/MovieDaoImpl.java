@@ -3,13 +3,12 @@ package com.project.dao.impl;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
+import com.project.dao.MovieDao;
 import com.project.db.DBConnect;
 import com.project.model.Movie;
 
-public class MovieDaoImpl {
+public class MovieDaoImpl implements MovieDao{
 
 	public Movie getMovieDetails(int movieId) {
 
@@ -20,13 +19,7 @@ public class MovieDaoImpl {
 			Connection con = dbcon.getConnection();
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from movies where movieid = " + movieId + ";");
-//			Statement stmt1 = con.createStatement();
-//			ResultSet rs1 = stmt1.executeQuery("select distinct showdate from shows where movieid = " + movieId + ";");
-//			
-//			List<String> availableDates = new ArrayList<>();
-//			while (rs1.next()) {
-//				availableDates.add(rs.getString("showdate"));
-//			}
+
 			while (rs.next()) {
 				movie.setMovieId(rs.getInt("movieid"));
 				movie.setMovieName(rs.getString("moviename"));
@@ -36,7 +29,6 @@ public class MovieDaoImpl {
 				movie.setGenre(rs.getString("genre"));
 				movie.setReleaseDate(rs.getDate("releasedate"));
 				movie.setRating(rs.getFloat("rating"));
-			//	movie.setAvailableShows(availableDates);
 			}
 			
 

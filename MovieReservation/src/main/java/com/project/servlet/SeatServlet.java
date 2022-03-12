@@ -38,7 +38,6 @@ public class SeatServlet extends HttpServlet {
 			}
 		}
 		
-
 		SeatServiceImpl seatService = new SeatServiceImpl();
 		Map<Integer, List<Seat>> seatDetails =seatService.getSeatDetails(showId,screenId,request);
 		request.setAttribute("showId", showId);

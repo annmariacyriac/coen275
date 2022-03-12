@@ -24,12 +24,7 @@ public class TheatreShowsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("movieId"));
-
-		System.out.println(request.getParameter("showDate"));
-
-		TheatreShowServiceImpl theatreShowService = new TheatreShowServiceImpl();
-		
+		TheatreShowServiceImpl theatreShowService = new TheatreShowServiceImpl();		
 		List<Theatre> theatres = theatreShowService.getTheatreShowsByDate((Movie)session.getAttribute("movieDetails"),
 				request.getParameter("showDate"));
 		
@@ -38,27 +33,12 @@ public class TheatreShowsServlet extends HttpServlet {
 			request.getRequestDispatcher("movies.jsp").forward(request, response);
 		}
 		else {
-			System.out.println(theatres.get(0).getTheatreName());
-			System.out.println(theatres.get(1).getTheatreName());
-			
 			session.setAttribute("allTheatres", theatres);
 			request.setAttribute("theatreDetails", theatres);
 			request.getRequestDispatcher("theatres.jsp").forward(request, response);
 		}
-		
-
-		
-
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
 
 }

@@ -8,10 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.project.dao.SeatDao;
 import com.project.db.DBConnect;
 import com.project.model.Seat;
 
-public class SeatDaoImpl {
+public class SeatDaoImpl implements SeatDao{
 
 	public List<Seat> getSeatDetails(Integer showId, Integer screenId) {
 
@@ -32,11 +33,7 @@ public class SeatDaoImpl {
 							+ "from seats left join seatsreserved   on seats.seatid = seatsreserved.seatid and  "
 							+ "seatsreserved.showid = " + showId + " where seats.screenid = " + screenId + " ;\r\n"
 							+ "");
-			/*
-			 * select s.seatId , s.seatnumber,s.categorytype,s.screenid ,
-			 * s.rownum,sr.bookingstatus from seats s left join seatsreserved sr on s.seatId
-			 * = sr.seatId and sr.showid = 333 where s.screenid = 222 ;
-			 */
+		
 			Map<String, Integer> priceMap = new HashMap<String, Integer>();
 			while (priceResultSet.next()) {
 				priceMap.put(priceResultSet.getString("seatcategorytype"), priceResultSet.getInt("price"));

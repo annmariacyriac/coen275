@@ -29,9 +29,10 @@ public class SignupServlet extends HttpServlet {
 		user.setName(request.getParameter("username"));
 		user.setPhone(Integer.parseInt(request.getParameter("phone")));
 
-		int isSuccess = signupService.userSignUp(user);
+		int userId = signupService.userSignUp(user);
 
-		if (isSuccess == 1) {
+		if (userId != 0) {
+			user.setUserId(userId);
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("username", user.getName());
 			if (((Show) request.getSession().getAttribute("showDetails")) != null) {
